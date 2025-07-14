@@ -17,7 +17,7 @@ import { useCart } from "@/context/CartContext";
 
 export function NavbarDemo() {
     const router = useRouter();
-    const { cart } = useCart(); // ⬅️ Get cart from context
+    const { cart } = useCart(); 
     const { orders } = useCart();
     const navItems = [
         {
@@ -45,7 +45,7 @@ export function NavbarDemo() {
             ),
             link: "/cart",
         },
-        orders.length >1?{
+        orders.length>0?{
             name: "Orders",
             link: "/orders",
         }:'',
@@ -56,6 +56,7 @@ export function NavbarDemo() {
 
     return (
         <div className="relative z-50 w-full">
+            {console.log("Cart items:", orders.length)}
             <Navbar>
                 {/* Desktop Navigation */}
                 <NavBody>
