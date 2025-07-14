@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import React, { useRef, useEffect } from 'react';
 import { FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const RestaurantSlider = ({ data }) => {
+const RestaurantSlider = ({ data, location }) => {
     const router = useRouter();
     const scrollRef = useRef(null);
     const itemWidth = 260;
@@ -59,7 +59,7 @@ const RestaurantSlider = ({ data }) => {
     return (
         <div className="w-full py-4 relative">
             <div className="flex justify-between items-center mb-2">
-                <h2 className="text-xl font-semibold">Top restaurant chains in Allahabad</h2>
+                <h2 className="text-xl font-semibold">Top restaurant chains {location?`in ${location}`: ''}</h2>
                 <div className="flex gap-2 pr-2">
                     <button
                         onClick={() => handleScroll('prev')}

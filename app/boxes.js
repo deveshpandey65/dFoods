@@ -2,7 +2,9 @@
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 export function GlowingEffectDemo({data}) {
+    const router = useRouter();
     return (
         <ul
             className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
@@ -10,6 +12,7 @@ export function GlowingEffectDemo({data}) {
                 area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
                 icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
                 title={data.title1}
+                link={data.link1}
                 motiondir='left'
                 image={data.img1}
                 description={data.desc1} />
@@ -18,6 +21,7 @@ export function GlowingEffectDemo({data}) {
                 icon={<Settings className="h-4 w-4 text-black dark:text-neutral-400" />}
                 title={data.title2}
                 image={data.img2}
+                link={data.link2}
                 motiondir='left'
                 description={data.desc2} />
             <GridItem
@@ -25,6 +29,7 @@ export function GlowingEffectDemo({data}) {
                 icon={<Lock className="h-4 w-4 text-black dark:text-neutral-400" />}
                 title={data.title3}
                 image={data.img3}
+                link={data.link3}
                 motiondir='up'
                 description={data.desc3} />
             <GridItem
@@ -32,6 +37,7 @@ export function GlowingEffectDemo({data}) {
                 icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
                 title={data.title4}
                 image={data.img4}
+                link={data.link4}
                 motiondir='right'
                 description={data.desc4} />
             <GridItem
@@ -39,6 +45,7 @@ export function GlowingEffectDemo({data}) {
                 icon={<Search className="h-4 w-4 text-black dark:text-neutral-400" />}
                 title={data.title5}
                 motiondir='right'
+                link={data.link5}
                 image={data.img5}
                 description={data.desc5} />
         </ul>
@@ -50,6 +57,7 @@ const GridItem = ({
     icon,
     title,
     image,
+    link,
     motiondir,
     description
 }) => {
@@ -66,14 +74,17 @@ const GridItem = ({
                 return { opacity: 0 }; // fallback
         }
     };
+    const router = useRouter();
 
     return (
+
         <li className={`min-h-[14rem] list-none ${area}`}>
             <motion.div
                 initial={getInitial(motiondir)}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3"
+                
             >
                 <GlowingEffect
                     spread={40}
@@ -82,7 +93,9 @@ const GridItem = ({
                     proximity={64}
                     inactiveZone={0.01}
                 />
-                <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+                <div 
+                 onClick={() => router.push(link)}
+                className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
                     <div className="absolute inset-0 z-0">
                         <img
                             src={image}

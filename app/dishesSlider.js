@@ -5,7 +5,7 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { useCart } from '@/context/CartContext';
 import AddToCartModel from '@/components/addToCartModel/model';
 
-const DishesSlider = ({ data }) => {
+const DishesSlider = ({ data, location }) => {
     const { addToCart } = useCart();
     const scrollRef = useRef(null);
     const itemWidth = 260;
@@ -65,7 +65,7 @@ const DishesSlider = ({ data }) => {
     return (
         <div className="w-full py-4 relative">
             <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold">Famous Dishes in Allahabad</h2>
+                <h2 className="text-xl font-semibold">Famous Dishes {location ? `in ${location}` : ''}</h2>
                 <div className="space-x-2">
                     <button onClick={() => handleScroll('left')} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
                         <MdChevronLeft size={24} />
