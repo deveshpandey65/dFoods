@@ -106,13 +106,7 @@ export function NavbarDemo() {
                         ))}
 
                         <div className="flex w-full flex-col gap-4 mt-4">
-                            <NavbarButton
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                variant="primary"
-                                className="w-full"
-                            >
-                                Login
-                            </NavbarButton>
+                            
                             <NavbarButton
                                 onClick={() => {
                                     setIsMobileMenuOpen(false);

@@ -53,6 +53,8 @@ export const CartProvider = ({ children }) => {
             id: Date.now(),
             items: Object.values(cartMap),
             date: new Date().toLocaleString(),
+            userDetails: JSON.parse(localStorage.getItem('userDetails')) || {},
+            total: localStorage.getItem('total') || 0,
         };
 
         setOrders((prev) => [newOrder, ...prev]);
