@@ -15,6 +15,7 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.523.0",
+    "mongodb": "^6.17.0",
     "motion": "^12.23.0",
     "next": "15.3.4",
     "nodemailer": "^7.0.5",
