@@ -53,7 +53,7 @@ export default function Page() {
       <div className="h-15"></div>
 
       {/* 📍 Display user location */}
-      {location && (
+      {location && location.locality&& (
         <div className="text-start pl-[5%] text-sm text-gray-600 py-2 my-4">
           📍 Delivering to: <strong>{location.locality}, {location.city}</strong>
         </div>
@@ -64,11 +64,11 @@ export default function Page() {
       </div>
 
       <div className="px-[5%]">
-        <RestaurantSlider data={restaurants} location={location?.city || ``} />
+        <RestaurantSlider data={restaurants} location={location ?location.locality?location.city:'':'' || ``} />
       </div>
 
       <div className="px-[5%]">
-        <DishesSlider data={topDishes} location={location?.city || ``} />
+        <DishesSlider data={topDishes} location={location ? location.locality ? location.city : '' : '' || ``} />
       </div>
 
       <div className="px-[5%]">
