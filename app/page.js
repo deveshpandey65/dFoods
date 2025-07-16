@@ -139,11 +139,10 @@ export default function Page() {
         <div className="flex flex-col md:flex-row  justify-between items-center mb-4">
           <div>
             <h2 className="text-2xl font-semibold">Explore Foods</h2>
-
           </div>
           <div>
             <select
-              value={sortOption}
+              value={sortOptionFood}
               onChange={(e) => setSortOptionFood(e.target.value)}
               className="border mt-4 md:mt-0 px-3 py-2 rounded text-sm"
             >

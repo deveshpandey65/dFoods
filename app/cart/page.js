@@ -70,8 +70,6 @@ export default function Cart() {
             userDetails,
         });
         const emailDATA= JSON.parse(localStorage.getItem('userEmail'));
-        console.log('Email Data:', emailDATA);
-        console.log('emailDATA:', emailDATA.email);
         userDetails.email =emailDATA.email || '';
         if (!userDetails.email) {
             alert('Please login to place an order.');
