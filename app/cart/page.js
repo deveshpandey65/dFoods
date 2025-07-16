@@ -19,6 +19,7 @@ export default function Cart() {
     const [showDetailsModal, setShowDetailsModal] = useState(false);
     const [userDetails, setUserDetails] = useState({
         name: '',
+        email: '',
         address: '',
         phone: '',
     });
@@ -68,6 +69,14 @@ export default function Cart() {
             total: getTotal(),
             userDetails,
         });
+        const emailDATA= JSON.parse(localStorage.getItem('userEmail'));
+        console.log('Email Data:', emailDATA);
+        console.log('emailDATA:', emailDATA.email);
+        userDetails.email =emailDATA.email || '';
+        if (!userDetails.email) {
+            alert('Please login to place an order.');
+            return;
+        }
         localStorage.setItem('userDetails', JSON.stringify(userDetails));
         localStorage.setItem('total' , getTotal());
         

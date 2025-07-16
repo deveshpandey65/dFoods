@@ -29,6 +29,7 @@ export default function LoginPage() {
         setLoading(false);
         if (res.ok) {
             localStorage.setItem('token', data.token);
+            localStorage.setItem('userEmail', JSON.stringify({ email }));
             alert('✅ Logged in!');
             window.location.href = '/'; 
         } else {

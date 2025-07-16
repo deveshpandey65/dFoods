@@ -46,20 +46,36 @@ export const CartProvider = ({ children }) => {
 
     const clearCart = () => setCartMap({});
 
-    const placeOrder = () => {
+    const placeOrder = async () => {
         if (Object.keys(cartMap).length === 0) return;
+
+        const userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
+        const total = localStorage.getItem('total') || 0;
 
         const newOrder = {
             id: Date.now(),
             items: Object.values(cartMap),
             date: new Date().toLocaleString(),
-            userDetails: JSON.parse(localStorage.getItem('userDetails')) || {},
-            total: localStorage.getItem('total') || 0,
+            userDetails,
+            total,
         };
 
         setOrders((prev) => [newOrder, ...prev]);
-        clearCart(); // Empty cart after placing order
+        clearCart();
+
+        // Send email
+        try {
+            await fetch('/api/confirmOrder', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userDetails, orderDetails: newOrder }),
+            });
+            console.log('Order confirmation email sent');
+        } catch (error) {
+            console.error('Failed to send order email:', error);
+        }
     };
+
 
     const cart = Object.values(cartMap);
 
