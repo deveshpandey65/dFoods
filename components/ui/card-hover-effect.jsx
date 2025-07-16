@@ -112,7 +112,7 @@ export const HoverEffect = ({ items, className, type }) => {
               {type === 'restaurant' ? (
                 <>
                   <p className="text-sm text-gray-700">
-                    <span className="text-green-600 font-semibold">★ {item.rating}</span> · {item.time}
+                    <span className="text-green-600 font-semibold">★ {item.rating}</span> · {item.openTime}
                   </p>
                   <p className="text-sm text-gray-500">{item.item}</p>
                   <p className="text-sm text-gray-400">{item.address}</p>
